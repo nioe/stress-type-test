@@ -1,8 +1,9 @@
-import { Component, h } from '@stencil/core';
+import {Component, h} from '@stencil/core';
+import {appRoot} from "../../global/constants";
 
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
+  styleUrl: 'app-root.scss',
   shadow: true,
 })
 export class AppRoot {
@@ -14,10 +15,10 @@ export class AppRoot {
         </header>
 
         <main>
-          <stencil-router>
+          <stencil-router root={`/${appRoot}/`}>
             <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route url="/profile/:name" component="app-profile" />
+              <stencil-route url="/" component="app-home" exact={true}/>
+              <stencil-route url="/profile/:name" component="app-profile"/>
             </stencil-route-switch>
           </stencil-router>
         </main>
