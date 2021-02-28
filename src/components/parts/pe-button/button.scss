@@ -1,0 +1,28 @@
+@import "../../../global/partials/colors";
+
+$buttonHeight: 50px;
+
+:host {
+  display: flex;
+  flex-grow: 0;
+  width: max-content;
+  padding: 0 $buttonHeight / 2;
+  height: $buttonHeight;
+  justify-content: center;
+  align-items: center;
+  color: $pfotenEffektWhite;
+  background-color: $pfotenEffektGreen;
+  border-radius: $buttonHeight / 2;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+  border: 2px solid $pfotenEffektGreen;
+  transition: all 200ms ease-in-out;
+}
+
+@media (hover: hover) {
+  :host(:hover) {
+    background-color: $pfotenEffektWhite;
+    color: $pfotenEffektGreen;
+  }
+}

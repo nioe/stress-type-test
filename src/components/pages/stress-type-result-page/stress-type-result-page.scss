@@ -1,0 +1,10 @@
+@import "../../../global/partials/spacing";
+
+:host {
+  display: block;
+
+  pe-button {
+    margin: $doubleMainSpace auto 0;
+
+  }
+}

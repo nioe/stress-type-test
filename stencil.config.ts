@@ -11,9 +11,16 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null,
       baseUrl: `https://pfoteneffekt.com/${appRoot}`,
+      copy: [
+        {src: '../node_modules/typeface-poppins/files', dest: 'assets/fonts/poppins'}
+      ]
     },
   ],
   plugins: [
-    sass()
+    sass({
+      injectGlobalPaths: [
+        'src/global/partials/_baseline.scss',
+      ]
+    })
   ]
 };

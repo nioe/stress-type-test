@@ -5,62 +5,113 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { RouterHistory } from "@stencil/router";
+import { Statement } from "./data/stress-type.interface";
+import { RatingClickEvent } from "./components/pages/statement-evaluation-page/statement-evaluation-page.interface";
 export namespace Components {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
+        "history": RouterHistory;
+    }
+    interface PeButton {
+    }
+    interface PeNotFoundPage {
+    }
+    interface PeStatementEvaluationPage {
+        "statement": Statement;
+    }
+    interface PeStressTypeResultPage {
+        "history": RouterHistory;
+        "ratedStatements": Array<Statement>;
+    }
+    interface PeWelcomePage {
+        "history": RouterHistory;
     }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
-    }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLPeButtonElement extends Components.PeButton, HTMLStencilElement {
+    }
+    var HTMLPeButtonElement: {
+        prototype: HTMLPeButtonElement;
+        new (): HTMLPeButtonElement;
+    };
+    interface HTMLPeNotFoundPageElement extends Components.PeNotFoundPage, HTMLStencilElement {
+    }
+    var HTMLPeNotFoundPageElement: {
+        prototype: HTMLPeNotFoundPageElement;
+        new (): HTMLPeNotFoundPageElement;
+    };
+    interface HTMLPeStatementEvaluationPageElement extends Components.PeStatementEvaluationPage, HTMLStencilElement {
+    }
+    var HTMLPeStatementEvaluationPageElement: {
+        prototype: HTMLPeStatementEvaluationPageElement;
+        new (): HTMLPeStatementEvaluationPageElement;
+    };
+    interface HTMLPeStressTypeResultPageElement extends Components.PeStressTypeResultPage, HTMLStencilElement {
+    }
+    var HTMLPeStressTypeResultPageElement: {
+        prototype: HTMLPeStressTypeResultPageElement;
+        new (): HTMLPeStressTypeResultPageElement;
+    };
+    interface HTMLPeWelcomePageElement extends Components.PeWelcomePage, HTMLStencilElement {
+    }
+    var HTMLPeWelcomePageElement: {
+        prototype: HTMLPeWelcomePageElement;
+        new (): HTMLPeWelcomePageElement;
+    };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "pe-button": HTMLPeButtonElement;
+        "pe-not-found-page": HTMLPeNotFoundPageElement;
+        "pe-statement-evaluation-page": HTMLPeStatementEvaluationPageElement;
+        "pe-stress-type-result-page": HTMLPeStressTypeResultPageElement;
+        "pe-welcome-page": HTMLPeWelcomePageElement;
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
     interface AppRoot {
+        "history"?: RouterHistory;
+    }
+    interface PeButton {
+    }
+    interface PeNotFoundPage {
+    }
+    interface PeStatementEvaluationPage {
+        "onRatingClick"?: (event: CustomEvent<RatingClickEvent>) => void;
+        "statement"?: Statement;
+    }
+    interface PeStressTypeResultPage {
+        "history"?: RouterHistory;
+        "onResetState"?: (event: CustomEvent<any>) => void;
+        "ratedStatements"?: Array<Statement>;
+    }
+    interface PeWelcomePage {
+        "history"?: RouterHistory;
     }
     interface IntrinsicElements {
-        "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "pe-button": PeButton;
+        "pe-not-found-page": PeNotFoundPage;
+        "pe-statement-evaluation-page": PeStatementEvaluationPage;
+        "pe-stress-type-result-page": PeStressTypeResultPage;
+        "pe-welcome-page": PeWelcomePage;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "pe-button": LocalJSX.PeButton & JSXBase.HTMLAttributes<HTMLPeButtonElement>;
+            "pe-not-found-page": LocalJSX.PeNotFoundPage & JSXBase.HTMLAttributes<HTMLPeNotFoundPageElement>;
+            "pe-statement-evaluation-page": LocalJSX.PeStatementEvaluationPage & JSXBase.HTMLAttributes<HTMLPeStatementEvaluationPageElement>;
+            "pe-stress-type-result-page": LocalJSX.PeStressTypeResultPage & JSXBase.HTMLAttributes<HTMLPeStressTypeResultPageElement>;
+            "pe-welcome-page": LocalJSX.PeWelcomePage & JSXBase.HTMLAttributes<HTMLPeWelcomePageElement>;
         }
     }
 }
