@@ -14,15 +14,27 @@ export class WelcomePage {
   render() {
     return (
       <Host>
-        <p>Willkommen</p>
+        <pe-card>
+          <pe-text-container>
+            <p class="bold">Herzlich willkommen auf dem Stresstyp-Test von PfotenEffekt.com</p>
+            <p>Auf den folgenden Seiten werden dir Aussagen angezeigt welche typisch für bestimmte Stresssituationen
+            und den Umgang damit sind. Bitte bewerte die Sätze jeweils mit 0 bis 3, wobei 0 bedeutet, dass die Aussage
+            überhaupt nicht zutrifft. Bewertest Du die Frage mit 3 heisst das, dass die Aussage voll und ganz auf
+            dich zutrifft.</p>
+            <p>Anhand diner Angaben berechnet die Seite automatisch deinen persönlichen Stresstypen.</p>
+            <p>Viel Spass!</p>
+          </pe-text-container>
 
-        <stencil-route-link
-          url={`/0`}
-          activeClass="active"
-          exact={true}
-        >
-          Start
-        </stencil-route-link>
+          <stencil-route-link
+            url={`/0`}
+            activeClass="active"
+            exact={true}
+            custom="pe-button"
+            slot="action"
+          >
+            Test ausfüllen
+          </stencil-route-link>
+        </pe-card>
       </Host>
     );
   }

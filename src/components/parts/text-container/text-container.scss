@@ -1,0 +1,17 @@
+@import "../../../global/partials/spacing";
+
+:host {
+  display: block;
+
+  ::slotted(p.bold) {
+    font-weight: bold;
+  }
+
+  ::slotted(p) {
+    margin: 0 0 $halfMainSpace;
+  }
+
+  ::slotted(p:last-child) {
+    margin: 0;
+  }
+}

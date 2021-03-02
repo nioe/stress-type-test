@@ -49,17 +49,19 @@ export class StressTypeResultPage {
   render() {
     return (
       <Host>
-        {Array.isArray(this.stressTypeResult) ? (
-          <Fragment>
-            <h1>Hallo Mischtyp!</h1>
-            <p>Die Typen {this.stressTypeResult.map(this.getStressTypeName).join(', ').replace(/,(?!.*,)/, ' &')} sind
-              bei dir gleich stark ausgeprägt.</p>
-          </Fragment>
-        ) : (
-          <h1>Hallo {this.getStressTypeName(this.stressTypeResult)}!</h1>
-        )}
+        <pe-card>
+          {Array.isArray(this.stressTypeResult) ? (
+            <Fragment>
+              <h1>Hallo Mischtyp!</h1>
+              <p>Die Typen {this.stressTypeResult.map(this.getStressTypeName).join(', ').replace(/,(?!.*,)/, ' &')} sind
+                bei dir gleich stark ausgeprägt.</p>
+            </Fragment>
+          ) : (
+            <h1>Hallo {this.getStressTypeName(this.stressTypeResult)}!</h1>
+          )}
 
-        <pe-button onClick={this.handleResetClick}>Nochmals ausfüllen</pe-button>
+          <pe-button slot="action" onClick={this.handleResetClick}>Nochmals ausfüllen</pe-button>
+        </pe-card>
       </Host>
     );
   }

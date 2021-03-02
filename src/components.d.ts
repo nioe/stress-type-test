@@ -14,6 +14,8 @@ export namespace Components {
     }
     interface PeButton {
     }
+    interface PeCard {
+    }
     interface PeNotFoundPage {
     }
     interface PeStatementEvaluationPage {
@@ -22,6 +24,8 @@ export namespace Components {
     interface PeStressTypeResultPage {
         "history": RouterHistory;
         "ratedStatements": Array<Statement>;
+    }
+    interface PeTextContainer {
     }
     interface PeWelcomePage {
         "history": RouterHistory;
@@ -39,6 +43,12 @@ declare global {
     var HTMLPeButtonElement: {
         prototype: HTMLPeButtonElement;
         new (): HTMLPeButtonElement;
+    };
+    interface HTMLPeCardElement extends Components.PeCard, HTMLStencilElement {
+    }
+    var HTMLPeCardElement: {
+        prototype: HTMLPeCardElement;
+        new (): HTMLPeCardElement;
     };
     interface HTMLPeNotFoundPageElement extends Components.PeNotFoundPage, HTMLStencilElement {
     }
@@ -58,6 +68,12 @@ declare global {
         prototype: HTMLPeStressTypeResultPageElement;
         new (): HTMLPeStressTypeResultPageElement;
     };
+    interface HTMLPeTextContainerElement extends Components.PeTextContainer, HTMLStencilElement {
+    }
+    var HTMLPeTextContainerElement: {
+        prototype: HTMLPeTextContainerElement;
+        new (): HTMLPeTextContainerElement;
+    };
     interface HTMLPeWelcomePageElement extends Components.PeWelcomePage, HTMLStencilElement {
     }
     var HTMLPeWelcomePageElement: {
@@ -67,9 +83,11 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "pe-button": HTMLPeButtonElement;
+        "pe-card": HTMLPeCardElement;
         "pe-not-found-page": HTMLPeNotFoundPageElement;
         "pe-statement-evaluation-page": HTMLPeStatementEvaluationPageElement;
         "pe-stress-type-result-page": HTMLPeStressTypeResultPageElement;
+        "pe-text-container": HTMLPeTextContainerElement;
         "pe-welcome-page": HTMLPeWelcomePageElement;
     }
 }
@@ -78,6 +96,8 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
     }
     interface PeButton {
+    }
+    interface PeCard {
     }
     interface PeNotFoundPage {
     }
@@ -90,15 +110,19 @@ declare namespace LocalJSX {
         "onResetState"?: (event: CustomEvent<any>) => void;
         "ratedStatements"?: Array<Statement>;
     }
+    interface PeTextContainer {
+    }
     interface PeWelcomePage {
         "history"?: RouterHistory;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "pe-button": PeButton;
+        "pe-card": PeCard;
         "pe-not-found-page": PeNotFoundPage;
         "pe-statement-evaluation-page": PeStatementEvaluationPage;
         "pe-stress-type-result-page": PeStressTypeResultPage;
+        "pe-text-container": PeTextContainer;
         "pe-welcome-page": PeWelcomePage;
     }
 }
@@ -108,9 +132,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "pe-button": LocalJSX.PeButton & JSXBase.HTMLAttributes<HTMLPeButtonElement>;
+            "pe-card": LocalJSX.PeCard & JSXBase.HTMLAttributes<HTMLPeCardElement>;
             "pe-not-found-page": LocalJSX.PeNotFoundPage & JSXBase.HTMLAttributes<HTMLPeNotFoundPageElement>;
             "pe-statement-evaluation-page": LocalJSX.PeStatementEvaluationPage & JSXBase.HTMLAttributes<HTMLPeStatementEvaluationPageElement>;
             "pe-stress-type-result-page": LocalJSX.PeStressTypeResultPage & JSXBase.HTMLAttributes<HTMLPeStressTypeResultPageElement>;
+            "pe-text-container": LocalJSX.PeTextContainer & JSXBase.HTMLAttributes<HTMLPeTextContainerElement>;
             "pe-welcome-page": LocalJSX.PeWelcomePage & JSXBase.HTMLAttributes<HTMLPeWelcomePageElement>;
         }
     }

@@ -10,7 +10,9 @@ export class NotFoundPage {
   render() {
     return (
       <Host>
-        <p>Nicht gefunden</p>
+        <pe-card>
+          <p>Nicht gefunden</p>
+        </pe-card>
       </Host>
     );
   }

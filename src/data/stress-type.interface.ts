@@ -120,7 +120,7 @@ export const statements: Array<Statement> = [
     stressType: StressType.SELBSTZWEIFLER
   },
   {
-    text: 'Ich brauche keine HIlfe von anderen.',
+    text: 'Ich brauche keine Hilfe von anderen.',
     stressType: StressType.SUPERHELD
   },
   {

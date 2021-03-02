@@ -60,29 +60,31 @@ export class AppRoot {
         </header>
 
         <main>
-          <stencil-router root={`/${appRoot}/`}>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="pe-welcome-page" exact={true}/>
+          <div class="content-container">
+            <stencil-router root={`/${appRoot}/`}>
+              <stencil-route-switch scrollTopOffset={0}>
+                <stencil-route url="/" component="pe-welcome-page" exact={true}/>
 
-              {this.randomlyOrderedStatements.map((statement, index) => (
+                {this.randomlyOrderedStatements.map((statement, index) => (
+                  <stencil-route
+                    url={`/${index}`}
+                    component="pe-statement-evaluation-page"
+                    componentProps={{statement}}
+                    exact={true}
+                  />
+                ))}
+
                 <stencil-route
-                  url={`/${index}`}
-                  component="pe-statement-evaluation-page"
-                  componentProps={{statement}}
+                  url="/result"
+                  component="pe-stress-type-result-page"
+                  componentProps={{ratedStatements: this.randomlyOrderedStatements}}
                   exact={true}
                 />
-              ))}
 
-              <stencil-route
-                url="/result"
-                component="pe-stress-type-result-page"
-                componentProps={{ratedStatements: this.randomlyOrderedStatements}}
-                exact={true}
-              />
-
-              <stencil-route component="pe-not-found-page"/>
-            </stencil-route-switch>
-          </stencil-router>
+                <stencil-route component="pe-not-found-page"/>
+              </stencil-route-switch>
+            </stencil-router>
+          </div>
         </main>
       </Host>
     );

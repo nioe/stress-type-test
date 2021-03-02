@@ -1,6 +1,8 @@
 @import "../../../global/partials/colors";
 @import "../../../global/partials/spacing";
 
+$statementRatingButtonSize: 50px;
+
 :host {
   width: 100%;
   display: flex;
@@ -10,16 +12,17 @@
   .statement-container {
     position: relative;
     padding: $doubleMainSpace $tripleMainSpace;
-    margin: 0 auto $tripleMainSpace;
+    margin: 0 auto;
+    width: fit-content;
     font-size: 2rem;
-    text-align: justify;
-    hyphens: auto;
+    text-align: center;
 
     &:before, &:after {
       position: absolute;
       font-size: 10rem;
       line-height: 10rem;
       color: $pfotenEffektGreen;
+      text-shadow: 5px 5px 10px rgb(0 0 0 / 70%);
     }
 
     &:before {
@@ -37,6 +40,10 @@
     @media (max-width: $maxContentWidth + 50px) {
       & {
         font-size: 1.5rem;
+
+        &:before, &:after {
+          font-size: 7rem;
+        }
 
         &:before {
           top: -3rem;
@@ -73,28 +80,32 @@
 
     .statement-rating {
       color: $pfotenEffektWhite;
-      border-radius: 5px;
-      background: linear-gradient(90deg, $pfotenEffektRed 0%, $pfotenEffektGreen 100%);
+      border-radius: $statementRatingButtonSize / 2;
+      border: 2px solid $pfotenEffektWhite;
+      overflow: hidden;
+      font-weight: bold;
 
       & > * {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60px;
-        height: 60px;
+        width: $statementRatingButtonSize;
+        height: $statementRatingButtonSize;
         flex-grow: 0;
         cursor: pointer;
         font-size: 1.2rem;
         user-select: none;
+        background-color: $pfotenEffektGreen;
 
         @media (hover: hover) {
           &:hover {
-            font-weight: bold;
+            background-color: $pfotenEffektWhite;
+            color: $pfotenEffektGreen;
           }
         }
 
         &:not(:last-child) {
-          border-right: 1px solid $pfotenEffektGray;
+          border-right: 2px solid $pfotenEffektWhite;
         }
       }
 
