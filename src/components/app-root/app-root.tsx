@@ -53,13 +53,19 @@ export class AppRoot implements ComponentInterface {
   }
 
   componentWillLoad() {
-    if (this.randomlyOrderedStatements.every(statement => statement.rating >= 0 && statement.rating <= 3)) {
+    let statementIsRated = statement => statement.rating >= 0 && statement.rating <= 3;
+    let statementIsUnrated = statement => !statementIsRated(statement);
+
+    if (this.isWelcomePage() && this.randomlyOrderedStatements.every(statementIsRated)) {
       console.log('Every statement has been rated. Going to result page...');
-      this.goToResult();
-    } else if (this.randomlyOrderedStatements.some(statement => statement.rating >= 0 && statement.rating <= 3)) {
+      this.goToResult(true);
+    } else if (this.isWelcomePage() && this.randomlyOrderedStatements.some(statementIsRated)) {
       const nextStatementIndex = this.randomlyOrderedStatements.findIndex(statement => !(statement.rating >= 0 && statement.rating <= 3));
       console.log(`Test has already been started. Going to back to statement ${nextStatementIndex}...`);
       this.goToStatement(nextStatementIndex, true);
+    } else if (!this.isWelcomePage() && this.randomlyOrderedStatements.every(statementIsUnrated)) {
+      console.log('Test has not been started. Going to welcome page...');
+      this.history.replace(`/${appRoot}`);
     }
   }
 
@@ -104,6 +110,8 @@ export class AppRoot implements ComponentInterface {
     this.randomlyOrderedStatements = getOrCreateRandomlyOrderedStatements();
   }
 
+  private isWelcomePage = () => !!this.history.location.pathname.match(new RegExp(`^\/${appRoot}[/]?$`));
+
   private goToWelcome = () => this.history.push(`/${appRoot}/`);
 
   private goToStatement = (statementIndex, replace = false) => {
@@ -112,7 +120,10 @@ export class AppRoot implements ComponentInterface {
     storeInLocalStorage(LocalStorageKey.CURRENT_STATEMENT, statementIndex);
   };
 
-  private goToResult = () => this.history.push(`/${appRoot}/result`);
+  private goToResult = (replace = false) => {
+    let resultRoute = `/${appRoot}/result`;
+    replace ? this.history.replace(resultRoute) : this.history.push(resultRoute);
+  }
 }
 
 injectHistory(AppRoot);

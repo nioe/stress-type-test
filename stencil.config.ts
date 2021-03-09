@@ -12,7 +12,8 @@ export const config: Config = {
       serviceWorker: null,
       baseUrl: `https://pfoteneffekt.com/${appRoot}`,
       copy: [
-        {src: '../node_modules/typeface-poppins/files', dest: 'assets/fonts/poppins'}
+        {src: '../node_modules/typeface-poppins/files', dest: 'assets/fonts/poppins'},
+        {src: '.htaccess', dest: '.htaccess'}
       ]
     },
   ],
