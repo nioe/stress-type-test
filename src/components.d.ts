@@ -15,6 +15,9 @@ export namespace Components {
     interface PeButton {
     }
     interface PeCard {
+        "titleText"?: string;
+    }
+    interface PeLogo {
     }
     interface PeNotFoundPage {
     }
@@ -50,6 +53,12 @@ declare global {
         prototype: HTMLPeCardElement;
         new (): HTMLPeCardElement;
     };
+    interface HTMLPeLogoElement extends Components.PeLogo, HTMLStencilElement {
+    }
+    var HTMLPeLogoElement: {
+        prototype: HTMLPeLogoElement;
+        new (): HTMLPeLogoElement;
+    };
     interface HTMLPeNotFoundPageElement extends Components.PeNotFoundPage, HTMLStencilElement {
     }
     var HTMLPeNotFoundPageElement: {
@@ -84,6 +93,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "pe-button": HTMLPeButtonElement;
         "pe-card": HTMLPeCardElement;
+        "pe-logo": HTMLPeLogoElement;
         "pe-not-found-page": HTMLPeNotFoundPageElement;
         "pe-statement-evaluation-page": HTMLPeStatementEvaluationPageElement;
         "pe-stress-type-result-page": HTMLPeStressTypeResultPageElement;
@@ -98,6 +108,9 @@ declare namespace LocalJSX {
     interface PeButton {
     }
     interface PeCard {
+        "titleText"?: string;
+    }
+    interface PeLogo {
     }
     interface PeNotFoundPage {
     }
@@ -119,6 +132,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "pe-button": PeButton;
         "pe-card": PeCard;
+        "pe-logo": PeLogo;
         "pe-not-found-page": PeNotFoundPage;
         "pe-statement-evaluation-page": PeStatementEvaluationPage;
         "pe-stress-type-result-page": PeStressTypeResultPage;
@@ -133,6 +147,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "pe-button": LocalJSX.PeButton & JSXBase.HTMLAttributes<HTMLPeButtonElement>;
             "pe-card": LocalJSX.PeCard & JSXBase.HTMLAttributes<HTMLPeCardElement>;
+            "pe-logo": LocalJSX.PeLogo & JSXBase.HTMLAttributes<HTMLPeLogoElement>;
             "pe-not-found-page": LocalJSX.PeNotFoundPage & JSXBase.HTMLAttributes<HTMLPeNotFoundPageElement>;
             "pe-statement-evaluation-page": LocalJSX.PeStatementEvaluationPage & JSXBase.HTMLAttributes<HTMLPeStatementEvaluationPageElement>;
             "pe-stress-type-result-page": LocalJSX.PeStressTypeResultPage & JSXBase.HTMLAttributes<HTMLPeStressTypeResultPageElement>;

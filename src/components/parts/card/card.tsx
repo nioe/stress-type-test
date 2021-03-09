@@ -1,4 +1,4 @@
-import {Component, Element, h, Host} from '@stencil/core';
+import {Component, Element, h, Host, Prop} from '@stencil/core';
 
 @Component({
   tag: 'pe-card',
@@ -7,12 +7,17 @@ import {Component, Element, h, Host} from '@stencil/core';
 })
 export class Card {
 
+  @Prop()
+  public titleText?: string;
+
   @Element()
   private host: HTMLPeCardElement;
 
   render() {
     return (
       <Host>
+        {this.titleText && <h1 class="title">{this.titleText}</h1>}
+
         <slot/>
 
         {this.hasActions() && (

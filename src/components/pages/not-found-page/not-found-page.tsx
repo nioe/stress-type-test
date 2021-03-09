@@ -10,8 +10,21 @@ export class NotFoundPage {
   render() {
     return (
       <Host>
-        <pe-card>
-          <p>Nicht gefunden</p>
+        <pe-card titleText="Oh nein!">
+          <div class="content-container">
+            <p>Leider konnte die gesuchte Seite nicht gefunden werden.</p>
+            <img src="assets/img/notFound.png" alt="not found"/>
+          </div>
+
+          <stencil-route-link
+            url={`/`}
+            activeClass="active"
+            exact={true}
+            custom="pe-button"
+            slot="action"
+          >
+            Zurück zur Startseite
+          </stencil-route-link>
         </pe-card>
       </Host>
     );

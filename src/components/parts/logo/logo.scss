@@ -1,0 +1,22 @@
+@import "../../../global/partials/colors";
+
+$pfotenEffektWhiteTransparent: rgba($pfotenEffektWhite, .8);
+
+:host {
+  display: block;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    filter: drop-shadow(10px 10px 10px $pfotenEffektWhiteTransparent) drop-shadow(-10px -10px 10px $pfotenEffektWhiteTransparent) drop-shadow(-10px 10px 10px $pfotenEffektWhiteTransparent) drop-shadow(10px -10px 10px $pfotenEffektWhiteTransparent);
+
+    .pfoten {
+      fill: $pfotenEffektBlack;
+    }
+
+    .effekt {
+      fill: $pfotenEffektGreen;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, forceUpdate, h, Host, Listen, Prop} from '@stencil/core';
+import {Component, ComponentInterface, forceUpdate, h, Host, Listen, Prop} from '@stencil/core';
 import {appRoot} from "../../global/constants";
 import {Statement} from "../../data/stress-type.interface";
 import {RatingClickEvent} from "../pages/statement-evaluation-page/statement-evaluation-page.interface";
@@ -17,7 +17,7 @@ import {injectHistory, RouterHistory} from "@stencil/router";
   styleUrl: 'app-root.scss',
   shadow: true,
 })
-export class AppRoot {
+export class AppRoot implements ComponentInterface {
 
   @Prop()
   public history: RouterHistory;
@@ -52,14 +52,23 @@ export class AppRoot {
     setTimeout(() => forceUpdate(this), 200);
   }
 
+  componentWillLoad() {
+    if (this.randomlyOrderedStatements.every(statement => statement.rating >= 0 && statement.rating <= 3)) {
+      console.log('Every statement has been rated. Going to result page...');
+      this.goToResult();
+    } else if (this.randomlyOrderedStatements.some(statement => statement.rating >= 0 && statement.rating <= 3)) {
+      const nextStatementIndex = this.randomlyOrderedStatements.findIndex(statement => !(statement.rating >= 0 && statement.rating <= 3));
+      console.log(`Test has already been started. Going to back to statement ${nextStatementIndex}...`);
+      this.goToStatement(nextStatementIndex, true);
+    }
+  }
+
   render() {
     return (
       <Host>
-        <header>
-          <h1>Stresstyp Test | PfotenEffekt.com</h1>
-        </header>
-
         <main>
+          <pe-logo/>
+
           <div class="content-container">
             <stencil-router root={`/${appRoot}/`}>
               <stencil-route-switch scrollTopOffset={0}>
@@ -94,9 +103,6 @@ export class AppRoot {
     this.currentStatementIndex = getCurrentStatementIndex();
     this.randomlyOrderedStatements = getOrCreateRandomlyOrderedStatements();
   }
-
-  // private isWelcomePage = () => !!this.history.location.pathname.match(new RegExp(`^\/${appRoot}[/]?$`));
-  // private isStatementPage = statementIndex => !!this.history.location.pathname.match(new RegExp(`^\/${appRoot}\/${statementIndex}[/]?$`));
 
   private goToWelcome = () => this.history.push(`/${appRoot}/`);
 

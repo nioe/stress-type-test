@@ -1,7 +1,6 @@
 import {Component, Event, EventEmitter, Fragment, h, Host, Prop} from '@stencil/core';
 import {Statement, StressType, StressTypeResult} from "../../../data/stress-type.interface";
 import {RouterHistory} from "@stencil/router";
-import {appRoot} from "../../../global/constants";
 
 @Component({
   tag: 'pe-stress-type-result-page',
@@ -23,12 +22,6 @@ export class StressTypeResultPage {
   private stressTypeResult: StressType | Array<StressType>;
 
   componentWillRender() {
-    // TODO Move to app-root and generalize
-    if (!this.ratedStatements.every(statement => statement.rating >= 0 && statement.rating <= 3)) {
-      console.log('Not every statment has been rated. Going back to first unrated statement...');
-      this.history.replace(`/${appRoot}/${this.ratedStatements.findIndex(statement => !(statement.rating >= 0 && statement.rating <= 3))}`);
-    }
-
     this.completeResult = this.ratedStatements.reduce(
       (result, statement) => Object.assign(result, {[statement.stressType]: result[statement.stressType] + statement.rating}),
       {

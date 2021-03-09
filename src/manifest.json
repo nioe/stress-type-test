@@ -1,13 +1,13 @@
 {
-  "name": "Stencil Starter",
-  "short_name": "Stencil",
-  "start_url": "/",
+  "name": "Pfoteneffekt.com Stresstyptest",
+  "short_name": "PE Stresstyptest",
+  "start_url": "/stresstyp-test",
   "display": "standalone",
   "icons": [{
-    "src": "assets/icon/icon.png",
+    "src": "assets/icon/favicon512.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#16161d",
-  "theme_color": "#16161d"
+  "background_color": "#23A455",
+  "theme_color": "#23A455"
 }

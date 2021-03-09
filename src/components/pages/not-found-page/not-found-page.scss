@@ -1,3 +1,15 @@
 :host {
   display: block;
+
+  pe-card {
+    .content-container {
+      display: flex;
+
+      img {
+        margin-left: auto;
+        max-width: 50%;
+        object-fit: contain;
+      }
+    }
+  }
 }
